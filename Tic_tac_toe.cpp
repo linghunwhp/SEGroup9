@@ -1,6 +1,6 @@
 bool isWin(char game[3][3])
 {
-
+//zdy
     bool win = false;
 // no need to judge the role of player
     if (game[0][0] == game[0][1] && game[0][1] == game[0][2])
