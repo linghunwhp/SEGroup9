@@ -69,11 +69,11 @@ int main()
 
         if (turn == false)
 
-            game[i][j] = 'X';
+            game[i][j] = player1;
 
         else
 
-            game[i][j] = 'O';
+            game[i][j] = player2;
 
         if (isWin(game))
         {
