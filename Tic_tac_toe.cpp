@@ -63,7 +63,7 @@ int main()
 
             cout << "Player 2: ";
 
-        cout << "Which cell to mark? i:[1..3], j:[1..3]: ";
+        cout << "Which cell to mark? i:[0..2], j:[0..2]: ";
 
         cin >> i >> j;
 
