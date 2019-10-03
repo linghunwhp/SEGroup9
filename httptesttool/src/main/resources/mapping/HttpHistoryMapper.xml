@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zdy.httptesttool.dao.HttpHistoryMapper" >
+  <resultMap id="BaseResultMap" type="java.util.HashMap" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="request" property="request" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zdy.httptesttool.pojo.HttpHistoryWithBLOBs" extends="BaseResultMap" >
+    <result column="body" property="body" jdbcType="LONGVARCHAR" />
+    <result column="cookie" property="cookie" jdbcType="LONGVARCHAR" />
+    <result column="header" property="header" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    body, cookie, header
+  </sql>
+  <insert id="insert" parameterType="com.zdy.httptesttool.pojo.HttpHistoryWithBLOBs" >
+    insert into history (id, method, request,
+      date, time, body, 
+      cookie, header)
+    values (#{id,jdbcType=INTEGER}, #{method,jdbcType=VARCHAR}, #{request,jdbcType=VARCHAR},
+      #{date,jdbcType=TIMESTAMP}, #{time,jdbcType=INTEGER}, #{body,jdbcType=LONGVARCHAR}, 
+      #{cookie,jdbcType=LONGVARCHAR}, #{header,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zdy.httptesttool.pojo.HttpHistoryWithBLOBs" >
+    insert into history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="request != null" >
+        request,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="body != null" >
+        body,
+      </if>
+      <if test="cookie != null" >
+        cookie,
+      </if>
+      <if test="header != null" >
+        header,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="request != null" >
+        #{request,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="body != null" >
+        #{body,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cookie != null" >
+        #{cookie,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="header != null" >
+        #{header,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="findAllHistory" resultMap="BaseResultMap">
+    select id,request,method from history
+  </select>
+
+  <select id="findHistoryById" resultType="com.zdy.httptesttool.pojo.HttpHistoryWithBLOBs">
+    select * from history where id = #{id}
+  </select>
+  
+  <delete id="deleteHistoryById">
+    delete from history where id = #{id}
+  </delete>
+
+  <select id="getMethods" resultType="java.util.Map">
+    select * from methods
+  </select>
+</mapper>
