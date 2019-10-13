@@ -7,6 +7,8 @@ const resolve = dir => require('path').join(__dirname, dir)
 process.env.VUE_APP_VERSION = require('./package.json').version
 process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYY-M-D HH:mm:ss')
 
+const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
+
 // 基础路径 注意发布之前要先修改这里
 let publicPath = '/'
 
@@ -14,7 +16,22 @@ module.exports = {
   publicPath, // 根据你的实际情况更改这里
   lintOnSave: true,
   devServer: {
-    publicPath // 和 publicPath 保持一致
+    publicPath, // 和 publicPath 保持一致
+    open: IS_PROD,
+    host: 'localhost',
+    port: 8080,
+    https: false,
+    hotOnly: false,
+    proxy: {
+      '/api': {
+        target: 'http://150.109.50.19:8081/',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   css: {
     loaderOptions: {

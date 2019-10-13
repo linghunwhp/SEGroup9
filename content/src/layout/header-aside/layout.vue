@@ -32,7 +32,6 @@
           <d2-header-theme/>
           <d2-header-size/>
           <d2-header-locales/>
-          <d2-header-user/>
         </div>
       </div>
       <!-- 下面 主体 -->
