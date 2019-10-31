@@ -97,6 +97,20 @@ module.exports = {
         .add('@/mock')
         .end()
     }
+    config.module
+      .rule('expose1')
+      .test(require.resolve('jquery'))
+      .use()
+      .loader('expose-loader')
+      .options('jQuery')
+      .end()
+    config.module
+      .rule('expose2')
+      .test(require.resolve('jquery'))
+      .use()
+      .loader('expose-loader')
+      .options('$')
+      .end()
   },
   // i18n
   pluginOptions: {
