@@ -10,10 +10,10 @@
         <div class="col-xs-1">
           <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          GET <span class="caret"></span>
+          {{ currentMethod }} <span class="caret"></span>
           </button>
             <ul class="dropdown-menu">
-              <li v-for="item in allMethods"><a href="#">{{item.method}}</a></li>
+              <li v-for="item in allMethods" :key="item.id" @click="changeMethod(item.method)"><a href="#">{{item.method}}</a></li>
             </ul>
           </div>
         </div>
@@ -208,19 +208,23 @@ export default {
       URLparamsBoxTrigger:false,
       HeaderBoxTrigger:false,
       MethodsList:[],
+      currentMethod: 'GET'
     }
   },
   methods: {
     ...mapActions('core/normal', [
       'GetMethods'
     ]),
+    changeMethod(methodName){
+      this.currentMethod = methodName
+    }
   },
   computed: {
     ...mapState('core/normal', {
       allMethods: 'methods'
     }),
   },
-  created() {
+  created () {
     this.GetMethods()
   }
 }

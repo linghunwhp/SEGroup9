@@ -163,7 +163,7 @@ export default {
       }
     },
     /**
-     * @description 点击 tab 上的删除按钮触发这里 首页的删除按钮已经隐藏 因此这里不用判断是 index
+     * @description 点击 tab 上的删除按钮触发这里首页的删除按钮已经隐藏 因此这里不用判断是 index
      */
     handleTabsEdit (tagName, action) {
       if (action === 'remove') {

@@ -10,6 +10,7 @@ export default {
   components: {},
   data () {
     return {
+      title: 'Normal',
       filename: __filename
     }
   }

@@ -12,27 +12,19 @@ const frameIn = [
     redirect: { name: 'index' },
     component: layoutHeaderAside,
     children: [
-      // 首页
+      // Normal
       {
         path: 'index',
         name: 'index',
         meta: {
-          auth: true
-        },
-        component: _import('system/index')
-      },
-      // 演示页面
-      {
-        path: 'page1',
-        name: 'Normal',
-        meta: {
           title: 'Normal',
-          auth: true
+          auth: false
         },
         component: _import('demo/Normal')
       },
+      // demo
       {
-        path: 'page2',
+        path: 'basic_Authge2',
         name: 'Basic Auth',
         meta: {
           title: 'Basic Auth',
@@ -41,7 +33,7 @@ const frameIn = [
         component: _import('demo/BasicAuth')
       },
       {
-        path: 'page3',
+        path: 'digest_Authe3',
         name: 'Digest Auth',
         meta: {
           title: 'Digest Auth',
@@ -50,7 +42,7 @@ const frameIn = [
         component: _import('demo/Digest_Auth')
       },
       {
-        path: 'page4',
+        path: 'oauth_1',
         name: 'OAuth_1.0',
         meta: {
           title: 'OAuth_1.0',
