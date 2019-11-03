@@ -14,6 +14,7 @@ import menuAside from '@/menu/aside'
 import { frameInRoutes } from '@/router/routes'
 import 'jquery'
 // import 'bootstrap'
+import 'bootstrap/dist/js/bootstrap.min'
 
 // 核心插件
 Vue.use(d2Admin)
