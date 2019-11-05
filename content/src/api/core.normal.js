@@ -39,17 +39,18 @@ export default {
   },
   InsertHistory (params) {
     return new Promise((resolve, reject) => {
-      axios({
-        method: 'post',
-        url: '/api/DeleteCollectionById/',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        data: params
-      })
+      // axios({
+      //   method: 'post',
+      //   url: '/api/InsertHistoryByJSON',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Accept': 'application/json'
+      //   },
+      //   data: params
+      // })
+      axios.post('/api/InsertHistoryByJSON',params)
         .then(res => {
-          console.log(res.data, ' DeleteCollectionById in the core.normal.js')
+          console.log(res.data, ' InsertHistoryByJSON in the core.normal.js')
           resolve(res.data)
         })
         .catch(err => {
@@ -107,5 +108,19 @@ export default {
           reject(err)
         })
     })
-  }
+  },
+  GetAnalyseURL(url){
+    console.log(url)
+        return new Promise((resolve, reject) => {
+      axios.get('/api/AnalyseURL/'+url[1]+'/'+url[0])
+        .then(res => {
+          console.log(res.data, ' AnalyseURL in the core.normal.js')
+          resolve(res.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+    }
+
 }

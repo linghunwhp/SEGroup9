@@ -63,7 +63,7 @@ const actions = {
   /**
    * @description add a history
    */
-  AddHistory (params) {
+  AddHistory ({ commit },params) {
     return new Promise((resolve, reject) => {
       normal.InsertHistory(params)
         .then(async res => {
@@ -135,6 +135,22 @@ const actions = {
         .then(async res => {
           console.log(res, 'response a collection from server in normal.js')
           resolve()
+        })
+        .catch(err => {
+          console.log('err: ', err)
+          reject(err)
+        })
+    })
+  },
+  /**
+   * @description 分析URL信息
+   */
+  GetAnalyseURL({ commit }, RequestURL ){
+    return new Promise((resolve, reject) => {
+      normal.GetAnalyseURL(RequestURL)
+        .then(async res => {
+          console.log(res, 'response AnalyseURL from server in normal.js')
+          resolve(res)
         })
         .catch(err => {
           console.log('err: ', err)
