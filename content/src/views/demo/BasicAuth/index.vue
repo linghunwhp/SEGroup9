@@ -1,6 +1,20 @@
 <template>
   <d2-container>
-
+    <div class="row" style="margin-bottom: 20px;border-bottom: 1px solid #eeeeee">
+        <div class="col-xs-4 col-xs-offset-1">
+          <label>username</label>
+          <input type="text" class="form-control" id="name" placeholder="username" style="margin-bottom: 10px;">
+          <label>password</label>
+          <input type="password" class="form-control" id="name" placeholder="password" style="margin-bottom: 10px;">
+          <button type="button" class="btn btn-default" style="margin-bottom: 10px;">
+            Refresh headers
+          </button>
+        </div>
+        <div class="col-xs-3">
+          <div class="alert alert-warning" role="alert"><strong>Note</strong><br>
+The authorization header will be generated and added as a custom header.</div>
+        </div>
+    </div>
     <div class="row">
 
         <div class="col-xs-7">
