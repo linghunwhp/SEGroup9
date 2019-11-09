@@ -17,7 +17,6 @@ export default {
     return new Promise((resolve, reject) => {
       axios.get('/api/GetHistory')
         .then(res => {
-          console.log(res.data, ' GetHistory in the core.normal.js')
           resolve(res.data)
         })
         .catch(err => {
@@ -39,16 +38,7 @@ export default {
   },
   InsertHistory (params) {
     return new Promise((resolve, reject) => {
-      // axios({
-      //   method: 'post',
-      //   url: '/api/InsertHistoryByJSON',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Accept': 'application/json'
-      //   },
-      //   data: params
-      // })
-      axios.post('/api/InsertHistoryByJSON',params)
+      axios.post('/api/InsertHistoryByJSON', params)
         .then(res => {
           console.log(res.data, ' InsertHistoryByJSON in the core.normal.js')
           resolve(res.data)
@@ -86,7 +76,6 @@ export default {
     return new Promise((resolve, reject) => {
       axios.get('/api/GetCollections')
         .then(res => {
-          console.log(res.data, ' GetCollections in the core.normal.js')
           resolve(res.data)
         })
         .catch(err => {
@@ -109,10 +98,10 @@ export default {
         })
     })
   },
-  GetAnalyseURL(url){
+  GetAnalyseURL (url) {
     console.log(url)
-        return new Promise((resolve, reject) => {
-      axios.get('/api/AnalyseURL/'+url[1]+'/'+url[0])
+    return new Promise((resolve, reject) => {
+      axios.get('/api/AnalyseURL/' + url[1] + '/' + url[0])
         .then(res => {
           console.log(res.data, ' AnalyseURL in the core.normal.js')
           resolve(res.data)
@@ -121,6 +110,6 @@ export default {
           reject(err)
         })
     })
-    }
+  }
 
 }

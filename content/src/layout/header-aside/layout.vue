@@ -44,7 +44,7 @@
           :style="{
             width: asideCollapse ? asideWidthCollapse : asideWidth,
             opacity: this.searchActive ? 0.5 : 1
-          }">
+          }" @click="GetAllHistory(), GetAllCollections()">
           <d2-menu-side/>
         </div>
         <!-- 主体 -->
@@ -138,9 +138,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('d2admin/menu', [
-      'asideCollapseToggle'
-    ]),
+    ...mapActions('d2admin/menu', ['GetAllHistory', 'GetAllCollections', 'asideCollapseToggle']),
     /**
      * 接收点击切换侧边栏的按钮
      */

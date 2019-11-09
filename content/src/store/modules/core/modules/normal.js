@@ -27,23 +27,6 @@ const actions = {
     })
   },
   /**
-   * @description get all histories
-   */
-  GetAllHistory ({ commit }) {
-    return new Promise((resolve, reject) => {
-      normal.GetAllHistory()
-        .then(async res => {
-          console.log(res, 'response histroy from server in normal.js')
-          commit('saveHistory', res)
-          resolve()
-        })
-        .catch(err => {
-          console.log('err: ', err)
-          reject(err)
-        })
-    })
-  },
-  /**
    * @description get a history by id
    */
   GetHistoryById ({ commit }, id) {
@@ -63,7 +46,7 @@ const actions = {
   /**
    * @description add a history
    */
-  AddHistory ({ commit },params) {
+  AddHistory ({ commit }, params) {
     return new Promise((resolve, reject) => {
       normal.InsertHistory(params)
         .then(async res => {
@@ -84,23 +67,6 @@ const actions = {
       normal.DeleteHistoryById(id)
         .then(async res => {
           console.log(res, 'response a collection from server in normal.js')
-          resolve()
-        })
-        .catch(err => {
-          console.log('err: ', err)
-          reject(err)
-        })
-    })
-  },
-  /**
-   * @description 返回全部的Collections
-   */
-  GetAllCollections ({ commit }) {
-    return new Promise((resolve, reject) => {
-      normal.GetAllCollections()
-        .then(async res => {
-          console.log(res, 'response collections from server in normal.js')
-          commit('saveCollections', res)
           resolve()
         })
         .catch(err => {
@@ -145,7 +111,7 @@ const actions = {
   /**
    * @description 分析URL信息
    */
-  GetAnalyseURL({ commit }, RequestURL ){
+  GetAnalyseURL ({ commit }, RequestURL) {
     return new Promise((resolve, reject) => {
       normal.GetAnalyseURL(RequestURL)
         .then(async res => {
@@ -157,7 +123,7 @@ const actions = {
           reject(err)
         })
     })
-  },
+  }
 }
 
 const getters = {

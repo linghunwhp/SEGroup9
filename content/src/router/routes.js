@@ -20,7 +20,8 @@ const frameIn = [
           title: 'Normal',
           auth: false
         },
-        component: _import('demo/Normal')
+        component: _import('demo/Normal'),
+        props: true
       },
       // demo
       {
@@ -30,7 +31,8 @@ const frameIn = [
           title: 'Basic Auth',
           auth: true
         },
-        component: _import('demo/BasicAuth')
+        component: _import('demo/BasicAuth'),
+        props: true
       },
       {
         path: 'digest_Authe3',
@@ -39,7 +41,8 @@ const frameIn = [
           title: 'Digest Auth',
           auth: true
         },
-        component: _import('demo/Digest_Auth')
+        component: _import('demo/Digest_Auth'),
+        props: true
       },
       {
         path: 'oauth_1',
@@ -48,7 +51,8 @@ const frameIn = [
           title: 'OAuth_1.0',
           auth: true
         },
-        component: _import('demo/OAuth_1.0')
+        component: _import('demo/OAuth_1.0'),
+        props: true
       },
       // 系统 前端日志
       {

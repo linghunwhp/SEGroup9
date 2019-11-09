@@ -10,7 +10,9 @@ export function elMenuItem (createElement, menu) {
     ...menu.iconSvg ? [
       createElement('d2-icon-svg', { props: { name: menu.iconSvg } })
     ] : [],
-    createElement('span', { slot: 'title' }, menu.title || '未命名菜单')
+    createElement('slot', { value: 'title' }, menu.title + ' ' || '未命名菜单'),
+    createElement('slot', { value: 'request_method' }, menu.method == undefined ? '' : menu.method + ' '),
+    createElement('slot', { value: 'resuest_id' }, menu.id == undefined ? '' : + menu.id + ' '),
   ])
 }
 

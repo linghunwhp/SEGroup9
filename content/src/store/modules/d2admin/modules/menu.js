@@ -1,6 +1,7 @@
 import { uniqueId } from 'lodash'
 // 设置文件
 import setting from '@/setting.js'
+import normal from '@api/core.normal'
 
 /**
  * 给菜单数据补充上 path 字段
@@ -25,7 +26,8 @@ export default {
     // 侧栏菜单
     aside: [],
     // 侧边栏收缩
-    asideCollapse: setting.menu.asideCollapse
+    asideCollapse: setting.menu.asideCollapse,
+    currentHisOrCollec: []
   },
   actions: {
     /**
@@ -83,6 +85,44 @@ export default {
         // end
         resolve()
       })
+    },
+    /**
+     * @description get all histories
+     */
+    GetAllHistory ({ commit }) {
+      return new Promise((resolve, reject) => {
+        normal.GetAllHistory()
+          .then(async res => {
+            commit('saveHistory', res)
+            resolve()
+          })
+          .catch(err => {
+            console.log('err: ', err)
+            reject(err)
+          })
+      })
+    },
+    /**
+     * @description 返回全部的Collections
+     */
+    GetAllCollections ({ commit }) {
+      return new Promise((resolve, reject) => {
+        normal.GetAllCollections()
+          .then(async res => {
+            commit('saveCollections', res)
+            resolve()
+          })
+          .catch(err => {
+            console.log('err: ', err)
+            reject(err)
+          })
+      })
+    },
+    SetCurrentHisOrCollec({commit}, param) {
+      // return new Promise((resolve, reject) => {
+        commit('saveCurrentHisOrCollec', param)
+        // resolve()
+      // })
     }
   },
   mutations: {
@@ -103,6 +143,30 @@ export default {
     asideSet (state, menu) {
       // store 赋值
       state.aside = supplementMenuPath(menu)
+    },
+    saveHistory (state, data) {
+      // 先对data整合
+      data.forEach(element => {
+        // 这个path要写进数据库
+        element.path = '/index'
+        element.title = element.request
+      })
+      state.aside[1].children = data
+    },
+    saveCollections (state, data) {
+      // 先对data整合
+      data.forEach(element => {
+        // 这个path要写进数据库
+        element.path = '/index'
+        element.title = element.request
+      })
+      state.aside[2].children = data
+    },
+    /**
+     * @description 设置当前History or collection
+     */
+    saveCurrentHisOrCollec (state, param) {
+      state.currentHisOrCollec = param
     }
   }
 }
