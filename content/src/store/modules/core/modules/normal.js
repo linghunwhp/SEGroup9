@@ -66,7 +66,23 @@ const actions = {
     return new Promise((resolve, reject) => {
       normal.DeleteHistoryById(id)
         .then(async res => {
-          console.log(res, 'response a collection from server in normal.js')
+          console.log(res, 'response a history from server in normal.js')
+          resolve()
+        })
+        .catch(err => {
+          console.log('err: ', err)
+          reject(err)
+        })
+    })
+  },
+  /**
+   * @description add a collection
+   */
+  AddCollection ({ commit }, id) {
+    return new Promise((resolve, reject) => {
+      normal.AddToCollection(id)
+        .then(async res => {
+          console.log(res, 'response a histroy from server in normal.js')
           resolve()
         })
         .catch(err => {

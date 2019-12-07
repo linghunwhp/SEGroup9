@@ -88,7 +88,7 @@
       </div>
 
       <div class="col-xs-1">
-        <button type="button" class="btn btn-default">Add to collection</button>
+        <button type="button" class="btn btn-default" @click="addCollection">Add to collection</button>
       </div>
 
       <div class="col-xs-1 col-xs-offset-7">
@@ -193,9 +193,13 @@ export default {
     ...mapActions('core/normal', ['GetMethods']),
     ...mapActions('core/normal', ['GetAnalyseURL']),
     ...mapActions('core/normal', ['AddHistory']),
+    ...mapActions('core/normal', ['AddCollection']),
     // getAnalyseURL(RequestURL){
     //   this.$store.dispatch('core/normal/GetAnalyseURL', RequestURL);
     // },
+    addCollection(){
+      this.AddCollection(12)
+    },
     changeMethod (methodName) {
       this.$set(this.RequestURL, 1, methodName)
     },

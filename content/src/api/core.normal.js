@@ -60,6 +60,20 @@ export default {
         })
     })
   },
+  AddToCollection (id) {
+    console.log("1 id is", id)
+    return new Promise((resolve, reject) => {
+      console.log("id is", id)
+      axios.post('/api/AddToCollection/' + id)
+        .then(res => {
+          console.log(res.data, ' AddToCollection in the core.normal.js')
+          resolve(res.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
   GetCollectionById (id) {
     return new Promise((resolve, reject) => {
       axios.get('/api/GetCollectionById/' + id)
@@ -82,9 +96,6 @@ export default {
           reject(err)
         })
     })
-  },
-  AddToCollection (id) {
-
   },
   DeleteCollectionById (id) {
     return new Promise((resolve, reject) => {
